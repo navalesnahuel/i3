@@ -129,22 +129,26 @@ exec --no-startup-id xinput --set-prop 9 "libinput Accel Profile Enabled" 0, 1
 exec --no-startup-id xset m 0 0
 
 ## [Basic Autostart]
-exec --no-startup-id ghostty start -- tmux
-exec --no-startup-id obsidian
-exec --no-startup-id firefox
-exec --no-startup-id zen
+exec --no-startup-id ghostty 
+# exec --no-startup-id obsidian
 exec --no-startup-id xset -dpms
 exec --no-startup-id xset s off
 exec --no-startup-id xset s noblank
 
+
+# Launch Zen Browser with Profile "Nahuel Navales" on workspace 2
+exec --no-startup-id i3-msg "workspace 2; exec ~/.tarball-installations/zen/zen-bin"
+
+# Launch Zen Browser with Profile "Nahuel" on workspace 4
+exec --no-startup-id i3-msg "workspace 4; exec ~/.tarball-installations/zen/zen-bin -P 'Nahuel'"
+
+
 ## [Assign apps to workspaces]
 assign      [class="ghostty"]   $ws1
-assign      [class="firefox"]   $ws2
-assign      [class="docker-desktop"] $ws6
-assign      [class="zen"]      $ws4
 assign      [class="obsidian"]   $ws5
 
 exec_always --no-startup-id picom 
 exec_always feh --bg-fill $HOME/Pictures/Wallpapers/g3.png
-exec_always /home/nahuel/Scripts/Start-up/set_digital_vibrance.sh
+exec_always --no-startup-id nvidia-settings --assign DigitalVibrance=777
+
 
